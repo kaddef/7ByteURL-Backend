@@ -4,20 +4,20 @@ import { validationResult } from "express-validator";
 
 export const destinationValidator = [
     body('destination')
-        .not().isEmpty().withMessage("Destination alanı boş olmamalı.")
+        .not().isEmpty().withMessage("Destination field must not be empty.")
         .bail()
-        .isURL().withMessage("Geçerli bir URL girilmeli.")
+        .isURL().withMessage("A valid URL must be provided.")
         .bail()
-        .isLength({ max: 2048 }).withMessage("URL 2048 karakterden uzun olmamalı.")
+        .isLength({ max: 2048 }).withMessage("URL must not be longer than 2048 characters.")
 ]
 
 export const shortIdValidator = [
     param('shortId')
-        .notEmpty().withMessage("ShortId boş olmamalı.")
+        .notEmpty().withMessage("ShortId must not be empty.")
         .bail()
-        .isAlphanumeric().withMessage("ShortId yalnızca harf ve rakam içermeli.")
+        .isAlphanumeric().withMessage("ShortId must only contain letters and numbers.")
         .bail()
-        .isLength({ min: 7, max:7 }).withMessage("ShortId 7 karakter olmalı.")
+        .isLength({ min: 7, max:7 }).withMessage("ShortId must be exactly 7 characters long.")
 ]
 
 export function validateRequest(req, res, next) {

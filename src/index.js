@@ -9,12 +9,12 @@ import { globalErrorHandler } from "./controller/errorController.js";
 dotenv.config({});
 
 const PORT = process.env.PORT || 3000;
-const ORIGIN = process.env.ORIGIN || "http://localhost:3000";
+const FEORIGIN = process.env.FEORIGIN || "http://localhost:3000";
 
 const app = express();
 
 app.use(cors({
-    origin: ORIGIN
+    origin: FEORIGIN
 }))
 
 connectDB()
