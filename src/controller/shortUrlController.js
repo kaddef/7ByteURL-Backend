@@ -63,7 +63,7 @@ export async function getQRCode(req,res,next) {
             return next(error)
         }
 
-        const qrCodeData = await QRCode.toDataURL(`http://localhost:3000/${shortId}`);//ORIGIN ENV HERE
+        const qrCodeData = await QRCode.toDataURL(`${process.env.FEORIGIN}/${shortId}`);//ORIGIN ENV HERE
 
         // Tarayıcıya indirme başlığını gönder
         res.setHeader('Content-Disposition', `attachment; filename=${shortId}.png`);
